@@ -11,7 +11,7 @@ fn main() {
     let morpion = Mutex::new(Node::new());
     tauri::Builder::default()
         .manage(morpion)
-        .invoke_handler(tauri::generate_handler![greet, draw, reset])
+        .invoke_handler(tauri::generate_handler![draw, reset])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
