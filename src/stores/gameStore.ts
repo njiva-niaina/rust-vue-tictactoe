@@ -54,7 +54,6 @@ export const useGameStore = defineStore("game", () => {
       setWinner(result.player.PlayerIdx - 1);
       return;
     }
-    console.log(result.game.IsOver && !result.win.Status);
     if (result.game.IsOver && !result.win.Status) {
       setWinner(null);
       return;

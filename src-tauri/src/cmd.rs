@@ -3,11 +3,6 @@ use std::{collections::HashMap, sync::Mutex};
 use tauri::State;
 use tictactoe::{DrawResult, Node, ResetResult};
 
-// #[tauri::command]
-// pub fn draw(morpion: State<Mutex<Node>>, idx: usize) -> HashMap<String, DrawResult> {
-//     morpion.lock().unwrap().draw(idx)
-// }
-
 #[tauri::command]
 pub fn draw(
     morpion: State<Mutex<Node>>,
