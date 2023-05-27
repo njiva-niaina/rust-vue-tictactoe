@@ -3,15 +3,15 @@
 
 mod cmd;
 
-use crate::cmd::{draw, reset};
+use cmd::{make_move, reset};
 use std::sync::Mutex;
 use tictactoe::Node;
 
 fn main() {
-    let morpion = Mutex::new(Node::new());
+    let node = Mutex::new(Node::new());
     tauri::Builder::default()
-        .manage(morpion)
-        .invoke_handler(tauri::generate_handler![draw, reset])
+        .manage(node)
+        .invoke_handler(tauri::generate_handler![make_move, reset])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }

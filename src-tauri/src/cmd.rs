@@ -1,17 +1,14 @@
 use std::{collections::HashMap, sync::Mutex};
-
 use tauri::State;
-use tictactoe::{DrawResult, Node, ResetResult};
+
+use tictactoe::Node;
 
 #[tauri::command]
-pub fn draw(
-    morpion: State<Mutex<Node>>,
-    idx: usize,
-) -> Result<HashMap<String, DrawResult>, String> {
-    Ok(morpion.lock().unwrap().draw(idx))
+pub fn make_move(node: State<Mutex<Node>>, idx: usize) -> Result<HashMap<String, i32>, String> {
+    Ok(node.lock().unwrap().make_move(idx))
 }
 
 #[tauri::command]
-pub fn reset(morpion: State<Mutex<Node>>) -> Result<HashMap<String, ResetResult>, String> {
-    Ok(morpion.lock().unwrap().reset())
+pub fn reset(node: State<Mutex<Node>>) -> Result<Node, String> {
+    Ok(node.lock().unwrap().reset())
 }
