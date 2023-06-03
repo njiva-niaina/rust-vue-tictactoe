@@ -16,3 +16,19 @@ type Player = {
   name: string;
   score: number;
 };
+
+type MoveResult = {
+  isGameOver: number;
+  isWinner: number;
+  player: number;
+};
+
+type ResetResult = {
+  game_counter: number;
+  player: number;
+  score: {
+    "1": number;
+    "-1": number;
+  };
+  tab: number[];
+};

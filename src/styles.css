@@ -1,24 +1,25 @@
+@font-face {
+  font-family: 'Poppins';
+  src: local('Poppins'),
+    url(./assets/fonts/Poppins/Poppins-Regular.ttf) format("truetype");
+}
+
 html,
 body {
-  font-family: 'Permanent Marker', sans-serif;
+  font-family: "Poppins", sans-serif;
   height: 100%;
 }
 
 body {
   margin: 0;
   padding: 0;
-  color: #123463;
-  background-color: #fffcf7;
+  background-color: #f4c531;
 }
 
 .text-sm {
   font-size: 16px;
 }
 
-.yellow {
-  color: #e49435;
-}
-
-.purple {
-  color: #b21071;
+.text-lg {
+  font-size: 4em;
 }
