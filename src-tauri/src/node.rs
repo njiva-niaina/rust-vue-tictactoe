@@ -28,11 +28,15 @@ impl Node {
     }
 
     pub fn reset(&mut self) -> Self {
+        self.tab = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+        self.player = 1;
+        self.score = self.score.clone();
+        self.game_counter += 1;
         Self {
-            tab: [0, 0, 0, 0, 0, 0, 0, 0, 0],
-            player: 1,
+            tab: self.tab,
+            player: self.player,
             score: self.score.clone(),
-            game_counter: self.game_counter + 1,
+            game_counter: self.game_counter,
         }
     }
 
