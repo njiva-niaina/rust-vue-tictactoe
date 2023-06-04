@@ -1,5 +1,7 @@
 use std::collections::HashMap;
 
+use crate::minimax;
+
 #[derive(Debug, serde::Serialize)]
 pub struct Node {
     tab: [i32; 9],
@@ -157,5 +159,25 @@ impl Node {
         }
 
         return 0;
+    }
+
+    pub fn find_best_move(&self, player: i32) -> usize {
+        let empty_index = self.find_empty_index();
+        if empty_index.len() == 1 {
+            return empty_index[0];
+        } else {
+            let mut best_move_index = empty_index[0];
+            let best_move_node = self.create_successor(best_move_index);
+            let mut best_move_eval = minimax(&best_move_node, 9, player);
+            for (_, val) in empty_index[1..].iter().enumerate() {
+                let current_move_node = self.create_successor(*val);
+                let current_move_eval = minimax(&current_move_node, 9, player);
+                if current_move_eval > best_move_eval {
+                    best_move_eval = current_move_eval;
+                    best_move_index = *val;
+                }
+            }
+            return best_move_index;
+        }
     }
 }

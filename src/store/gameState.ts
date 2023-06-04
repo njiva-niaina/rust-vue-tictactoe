@@ -8,6 +8,7 @@ export const useGameState = defineStore("game", () => {
   const isGameOver = ref(false);
   const winner = ref<Player | null>(null);
   const player = ref(1);
+  const isSinglePlayer = ref(false);
 
   const players = reactive({
     "1": {
@@ -30,12 +31,27 @@ export const useGameState = defineStore("game", () => {
     players["-1"].score = result.score["-1"];
     isGameOver.value = false;
     winner.value = null;
+    player.value = result.player;
   }
 
   async function makeMove(idx: number) {
     if (tab.value[idx] !== 0) return;
+
     const result = (await invoke("make_move", { idx: idx })) as MoveResult;
     tab.value[idx] = result.player;
+
+    setGameStatus(result);
+
+    player.value = -player.value;
+
+    if (isSinglePlayer.value) {
+      makeBestMove();
+    }
+
+    return;
+  }
+
+  function setGameStatus(result: MoveResult) {
     if (!!result.isGameOver) {
       isGameOver.value = true;
       if ((!!result.isWinner && result.player === 1) || result.player === -1) {
@@ -43,10 +59,23 @@ export const useGameState = defineStore("game", () => {
       }
       return;
     }
-    console.log(player.value);
-    player.value = -player.value;
-    console.log(player.value);
-    return;
+  }
+
+  async function makeBestMove() {
+    const bestMoveIdx = await findBestMove();
+    if (player.value === -1 && bestMoveIdx !== -1) {
+      setTimeout(() => {
+        makeMove(bestMoveIdx);
+      }, 550);
+    }
+  }
+
+  async function findBestMove(): Promise<number> {
+    if (player.value !== -1 || isGameOver.value) return -1;
+    const bestMove = (await invoke("find_best_move", {
+      player: player.value,
+    })) as number;
+    return bestMove;
   }
 
   return {
@@ -56,6 +85,7 @@ export const useGameState = defineStore("game", () => {
     isGameOver,
     winner,
     player,
+    isSinglePlayer,
     reset,
     makeMove,
   };
