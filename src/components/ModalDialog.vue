@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import GameResult from "./elements/GameResult.vue";
 const props = defineProps<{
   display: boolean;
 }>();
@@ -8,7 +9,7 @@ const props = defineProps<{
   <Teleport to="body">
     <div role="dialog" class="modal" :class="display ? 'show' : ''">
       <div class="dialog" :class="display ? 'show' : ''">
-        <slot name="dialog-content"></slot>
+        <GameResult />
       </div>
     </div>
   </Teleport>
@@ -16,41 +17,38 @@ const props = defineProps<{
 
 <style scoped>
 .modal {
-  display: none;
-  position: fixed;
-  bottom: 0;
-  right: 0;
+  z-index: -10;
+  position: absolute;
+  top: 0;
+  width: 100%;
   opacity: 0;
-  background-color: transparent;
-  transition: all 2s ease;
+  background-color: rgba(0, 0, 0, 0.2);
+  transition: all 1s ease;
 }
 
 .modal.show {
-  display: block;
-  top: 0;
-  left: 0;
+  z-index: 10;
+  bottom: 0;
   opacity: 1;
-  background-color: rgba(255, 255, 255, 0.35);
 }
 
 .dialog {
-  min-width: 24em;
-  min-height: 12em;
-  z-index: 100;
   opacity: 0;
   position: fixed;
-  top: 75%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #ffffff;
+  bottom: 0;
+  right: 50%;
+  transform: translateX(50%);
+  min-width: 24em;
   box-shadow: 0 0.9em 2.8em rgba(86, 66, 0, 0.2);
   border-radius: 0.5em;
-  padding: 8px;
-  transition: all 2s ease;
+  padding: 16px;
+  transition: all 1s ease;
 }
 
 .dialog.show {
-  opacity: 100;
-  top: 40%;
+  z-index: 100;
+  opacity: 1;
+  bottom: 45%;
+  background-color: #ffffff;
 }
 </style>
