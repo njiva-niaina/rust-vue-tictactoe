@@ -26,7 +26,7 @@ const { player, players } = storeToRefs(gameState);
 <style scoped>
 .player-container {
   background-color: #ffffff;
-  width: 40%;
+  width: 60%;
   display: flex;
   flex-direction: column;
   border-radius: 0 0 0.6em 0.6em;
