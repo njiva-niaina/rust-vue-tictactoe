@@ -1,13 +1,13 @@
 import i18n from "@/i18n";
 
 export const useTranslation = () => {
-  const supportedLocales = import.meta.env.VITE_SUPPORTED_LOCALES.split(",");
+  const supportedLocales = ["en", "fr", "mg"];
 
-  function setCurrentLocale(newLocale: string) {
+  function setCurrentLocale(newLocale: "fr" | "en" | "mg") {
     i18n.global.locale.value = newLocale;
   }
 
-  async function switchLanguage(newLocale: string) {
+  async function switchLanguage(newLocale: "fr" | "en" | "mg") {
     setCurrentLocale(newLocale);
     document.querySelector("html")?.setAttribute("lang", newLocale);
   }

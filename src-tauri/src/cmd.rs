@@ -14,6 +14,6 @@ pub fn reset(node: State<Mutex<Node>>) -> Result<Node, String> {
 }
 
 #[tauri::command]
-pub fn find_best_move(node: State<Mutex<Node>>, player: i32) -> Result<usize, String> {
-    Ok(node.lock().unwrap().find_best_move(player))
+pub fn find_best_move(node: State<Mutex<Node>>, player: i32, depth: i32) -> Result<usize, String> {
+    Ok(node.lock().unwrap().find_best_move(player, depth))
 }

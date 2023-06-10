@@ -1,12 +1,15 @@
 <script setup lang="ts">
-import CButton from "@/components/forms/CButton.vue";
-import MGFlag from "@/components/icons/MGFlag.vue";
-import ENFlag from "@/components/icons/ENFlag.vue";
-import FRFlag from "@/components/icons/FRFlag.vue";
+import { useI18n } from "vue-i18n";
 
+import CButton from "@/components/forms/CButton.vue";
+import ENFlag from "@/components/icons/ENFlag.vue";
 import { useModalNavigation } from "@/composable/modalNavigation";
+import { useTranslation } from "@/composable/translation";
+
+const { locale } = useI18n();
 
 const modalNavigation = useModalNavigation();
+const translation = useTranslation();
 </script>
 
 <template>
@@ -15,9 +18,18 @@ const modalNavigation = useModalNavigation();
     <div class="lang-container">
       <p>{{ $t("setting.lang") }}</p>
       <div class="lang">
-        <MGFlag :width="154" :height="130" /> --
-        <ENFlag :width="54" :height="30" /> --
-        <FRFlag :width="54" :height="30" /> --
+        <ENFlag
+          :is-selected="locale === 'en'"
+          @click="translation.switchLanguage('en')"
+        />
+        <ENFlag
+          :is-selected="locale === 'fr'"
+          @click="translation.switchLanguage('fr')"
+        />
+        <ENFlag
+          :is-selected="locale === 'mg'"
+          @click="translation.switchLanguage('mg')"
+        />
       </div>
     </div>
     <CButton
@@ -35,7 +47,6 @@ const modalNavigation = useModalNavigation();
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 1em;
 }
 
 span {
@@ -50,10 +61,17 @@ span {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-bottom: 2em;
 }
 
 .lang {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+p {
+  font-size: 22px;
 }
 </style>

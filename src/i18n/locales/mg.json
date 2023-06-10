@@ -15,7 +15,13 @@
   },
   "setting": {
     "title": "Fanamboarana",
-    "lang": "Teny",
+    "lang": "Misafidiana teny",
+    "back": "Hiverina"
+  },
+  "result": {
+    "win": "no mpandresy",
+    "null": "ady sahala",
+    "again": "Hilalao",
     "back": "Hiverina"
   }
 }

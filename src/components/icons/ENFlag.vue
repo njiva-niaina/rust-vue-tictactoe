@@ -1,17 +1,14 @@
 <script setup lang="ts">
 const props = defineProps<{
-    width: number,
-    height: number
-}>()
+  isSelected: boolean;
+}>();
 </script>
-
 
 <template>
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 60 30"
-    :width="width"
-    :height="height"
+    :class="isSelected ? 'selected' : ''"
   >
     <clipPath id="s">
       <path d="M0,0 v30 h60 v-30 z" />
@@ -33,3 +30,17 @@ const props = defineProps<{
     </g>
   </svg>
 </template>
+
+<style scoped>
+svg {
+  padding: 1px;
+  cursor: pointer;
+  height: 30px;
+  border-radius: 4px;
+  border: 3px solid rgba(0, 0, 0, 0.2);
+}
+
+svg.selected {
+  border: 3px solid #f4c531;
+}
+</style>

@@ -1,12 +1,31 @@
 <script lang="ts" setup>
 import { storeToRefs } from "pinia";
+import { useI18n } from "vue-i18n";
 
 import Brain from "@/components/icons/Brain.vue";
 import Heart from "@/components/icons/Heart.vue";
+import CButtonVue from "../forms/CButton.vue";
 import { useGameStore } from "@/store/gameStore";
+import { useModalNavigation } from "@/composable/modalNavigation";
 
+const { t } = useI18n();
+
+const modalNavigation = useModalNavigation();
 const gameStore = useGameStore();
 const { winner } = storeToRefs(gameStore);
+
+const buttons = [
+  {
+    id: 1,
+    content: t("result.again"),
+    clickHandler: () => gameStore.reset(),
+  },
+  {
+    id: 2,
+    content: t("result.back"),
+    clickHandler: () => modalNavigation.navigateToComponent("Home"),
+  },
+];
 </script>
 
 <template>
@@ -21,10 +40,15 @@ const { winner } = storeToRefs(gameStore);
         <Heart :height="128" :width="128" />
         <Brain :height="128" :width="128" />
       </div>
-      {{ $t("home.singlePlayer") }}
       <div class="legend">Match null</div>
     </div>
-    <button @click="gameStore.reset">Rejouer</button>
+    <CButtonVue
+      v-for="btn in buttons"
+      width="18em"
+      :key="btn.id"
+      :content="btn.content"
+      @click="btn.clickHandler"
+    />
   </div>
 </template>
 
@@ -57,9 +81,5 @@ const { winner } = storeToRefs(gameStore);
 
 button {
   margin-top: 16px;
-  border: none;
-  background: none;
-  color: #000;
-  cursor: pointer;
 }
 </style>

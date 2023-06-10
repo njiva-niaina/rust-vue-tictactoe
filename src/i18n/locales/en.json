@@ -15,7 +15,13 @@
   },
   "setting": {
     "title": "Setting",
-    "lang": "Language",
+    "lang": "Choose a language",
+    "back": "Back"
+  },
+  "result": {
+    "win": "Win",
+    "null": "Null match",
+    "again": "Play again",
     "back": "Back"
   }
 }

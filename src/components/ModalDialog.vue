@@ -38,7 +38,7 @@ const { showModal, currentModalContent } = storeToRefs(modalStore);
   position: fixed;
   bottom: 0;
   right: 50%;
-  transform: translateX(50%);
+  transform: translate(50%, 50%);
   min-width: 24em;
   min-height: 18em;
   box-shadow: 0 0.9em 2.8em rgba(86, 66, 0, 0.2);
@@ -50,7 +50,7 @@ const { showModal, currentModalContent } = storeToRefs(modalStore);
 .dialog.show {
   z-index: 100;
   opacity: 1;
-  bottom: 35%;
+  bottom: 55%;
   background-color: #ffffff;
 }
 </style>

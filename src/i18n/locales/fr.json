@@ -15,7 +15,13 @@
   },
   "setting": {
     "title": "Paramètre",
-    "lang": "Langage",
+    "lang": "Choisissez une langue",
+    "back": "Retour"
+  },
+  "result": {
+    "win": "a gagné",
+    "null": "Match null",
+    "again": "Rejouer",
     "back": "Retour"
   }
 }
