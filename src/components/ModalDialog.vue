@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import GameResult from "./elements/GameResult.vue";
 const props = defineProps<{
   display: boolean;
 }>();
@@ -9,7 +8,7 @@ const props = defineProps<{
   <Teleport to="body">
     <div role="dialog" class="modal" :class="display ? 'show' : ''">
       <div class="dialog" :class="display ? 'show' : ''">
-        <GameResult />
+        <slot></slot>
       </div>
     </div>
   </Teleport>

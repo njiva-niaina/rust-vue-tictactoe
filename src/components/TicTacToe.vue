@@ -1,11 +1,6 @@
 <script setup lang="ts">
-import Board from "./elements/Board.vue";
-import Player from "./elements/Player.vue";
-import Setting from "./elements/Setting.vue";
-
-defineProps<{
-  showSettings: boolean;
-}>();
+import Board from "@/components/elements/Board.vue";
+import Player from "@/components/elements/Player.vue";
 </script>
 
 <template>
@@ -14,7 +9,6 @@ defineProps<{
       <Board />
       <Player />
     </div>
-    <Setting :show="showSettings" />
   </div>
 </template>
 

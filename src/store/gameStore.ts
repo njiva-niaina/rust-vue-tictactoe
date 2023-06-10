@@ -1,14 +1,19 @@
 import { invoke } from "@tauri-apps/api/tauri";
 import { defineStore } from "pinia";
-import { reactive, ref } from "vue";
+import { computed, reactive, ref } from "vue";
 
-export const useGameState = defineStore("game", () => {
+import GameResult from "@/components/elements/GameResult.vue";
+import Home from "@/components/elements/Home.vue";
+import Setting from "@/components/elements/Setting.vue";
+
+export const useGameStore = defineStore("game", () => {
   const tab = ref([0, 0, 0, 0, 0, 0, 0, 0, 0]);
   const gameCounter = ref(0);
   const isGameOver = ref(false);
   const winner = ref<Player | null>(null);
   const player = ref(1);
   const isSinglePlayer = ref(false);
+  const currentModalContent = ref<"Home" | "Setting" | "result">("Home");
 
   const players = reactive({
     "1": {
@@ -22,6 +27,14 @@ export const useGameState = defineStore("game", () => {
       score: 0,
     },
   });
+
+  const modalContent = computed(() =>
+    currentModalContent.value === "Home"
+      ? Home
+      : currentModalContent.value === "Setting"
+      ? Setting
+      : GameResult
+  );
 
   async function reset() {
     const result = (await invoke("reset")) as ResetResult;

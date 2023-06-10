@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
 
-import { useGameState } from "../../store/gameState";
-import Brain from "../icons/Brain.vue";
-import Heart from "../icons/Heart.vue";
+import { useGameStore } from "@/store/gameStore";
+import Brain from "@/components/icons/Brain.vue";
+import Heart from "@/components/icons/Heart.vue";
 
-const gameState = useGameState();
-const { player, players } = storeToRefs(gameState);
+const gameStore = useGameStore();
+const { player, players } = storeToRefs(gameStore);
 </script>
 
 <template>

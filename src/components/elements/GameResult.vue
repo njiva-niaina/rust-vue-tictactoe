@@ -1,12 +1,12 @@
 <script lang="ts" setup>
 import { storeToRefs } from "pinia";
 
-import { useGameState } from "../../store/gameState";
-import Brain from "../icons/Brain.vue";
-import Heart from "../icons/Heart.vue";
+import { useGameStore } from "@/store/gameStore";
+import Brain from "@/components/icons/Brain.vue";
+import Heart from "@/components/icons/Heart.vue";
 
-const gameState = useGameState();
-const { winner } = storeToRefs(gameState);
+const gameStore = useGameStore();
+const { winner } = storeToRefs(gameStore);
 </script>
 
 <template>
@@ -21,9 +21,10 @@ const { winner } = storeToRefs(gameState);
         <Heart :height="128" :width="128" />
         <Brain :height="128" :width="128" />
       </div>
+      {{ $t("home.singlePlayer") }}
       <div class="legend">Match null</div>
     </div>
-    <button @click="gameState.reset">Rejouer</button>
+    <button @click="gameStore.reset">Rejouer</button>
   </div>
 </template>
 

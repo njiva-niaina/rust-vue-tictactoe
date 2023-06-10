@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
 
-import { useGameState } from "../../store/gameState";
+import { useGameStore } from "@/store/gameStore";
 import BoardItem from "./BoardItem.vue";
 
-const gameState = useGameState();
-const { tab } = storeToRefs(gameState);
+const gameStore = useGameStore();
+const { tab } = storeToRefs(gameStore);
 </script>
 
 <template>

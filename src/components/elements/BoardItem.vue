@@ -1,16 +1,16 @@
 <script setup lang="ts">
 import { ref, watch } from "vue";
 
-import { useGameState } from "../../store/gameState";
-import Brain from "../icons/Brain.vue";
-import Heart from "../icons/Heart.vue";
+import { useGameStore } from "@/store/gameStore";
+import Brain from "@/components/icons/Brain.vue";
+import Heart from "@/components/icons/Heart.vue";
 
 const props = defineProps<{
   idx: number;
   value: number;
 }>();
 
-const gameState = useGameState();
+const gameStore = useGameStore();
 
 const iconSize = ref({
   heart: {
@@ -26,7 +26,7 @@ const iconSize = ref({
 async function makeMove() {
   // Box is not empty
   if (!!props.value) return;
-  await gameState.makeMove(props.idx);
+  await gameStore.makeMove(props.idx);
 }
 
 function updateIconSize({
