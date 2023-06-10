@@ -23,5 +23,10 @@
     "null": "ady sahala",
     "again": "Hilalao",
     "back": "Hiverina"
+  },
+  "game": {
+    "player1": "Mpilalao 1",
+    "player2": "Mpilalao 2",
+    "counter": "Lalao"
   }
 }

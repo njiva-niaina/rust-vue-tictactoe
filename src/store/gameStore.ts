@@ -17,12 +17,12 @@ export const useGameStore = defineStore("game", () => {
 
   const players = reactive({
     "1": {
-      name: "Player 1",
+      name: "game.player1",
       schema: "Heart",
       score: 0,
     },
     "-1": {
-      name: "Player 1",
+      name: "game.player2",
       schema: "Brain",
       score: 0,
     },

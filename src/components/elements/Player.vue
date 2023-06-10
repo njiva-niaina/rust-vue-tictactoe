@@ -1,23 +1,42 @@
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
+import { computed, ref } from "vue";
 
 import Brain from "@/components/icons/Brain.vue";
 import Heart from "@/components/icons/Heart.vue";
 import { useGameStore } from "@/store/gameStore";
 
 const gameStore = useGameStore();
-const { player, players } = storeToRefs(gameStore);
+const { player, players, gameCounter } = storeToRefs(gameStore);
+
+const infos = ref([
+  {
+    id: 1,
+    title: computed(() => players.value[1].name),
+    value: computed(() => players.value[1].score),
+  },
+  {
+    id: 2,
+    title: "game.counter",
+    value: computed(() => gameCounter.value),
+  },
+  {
+    id: 3,
+    title: computed(() => players.value["-1"].name),
+    value: computed(() => players.value["-1"].score),
+  },
+]);
 </script>
 
 <template>
   <div class="player-container">
     <div class="line" :class="player === -1 ? 'second' : ''"></div>
     <div class="player">
-      <div v-for="(item, idx) in players" class="player-info">
-        <Heart v-if="idx === '1'" :height="50" :width="50" />
-        <Brain v-else :height="50" :width="50" />
-        <span class="player-name">{{ item.name }}</span>
-        <span class="player-score">{{ item.score }}</span>
+      <div v-for="info in infos" :key="info.id" class="player-info">
+        <Heart v-if="info.id === 1" :height="50" :width="50" />
+        <Brain v-if="info.id === 3" :height="50" :width="50" />
+        <span class="player-name">{{ $t(info.title) }}</span>
+        <span class="player-score">{{ info.value }}</span>
       </div>
     </div>
   </div>
@@ -26,7 +45,7 @@ const { player, players } = storeToRefs(gameStore);
 <style scoped>
 .player-container {
   background-color: #ffffff;
-  width: 60%;
+  width: 40%;
   display: flex;
   flex-direction: column;
   border-radius: 0 0 0.6em 0.6em;
@@ -36,13 +55,13 @@ const { player, players } = storeToRefs(gameStore);
 .line {
   background-color: #f24d11;
   height: 6px;
-  width: 50%;
+  width: 35%;
   transition: all 1s ease;
 }
 
 .line.second {
   background-color: #ff8195;
-  transform: translateX(100%);
+  transform: translateX(186.5%);
 }
 
 .player {

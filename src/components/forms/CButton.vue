@@ -1,14 +1,14 @@
 <script setup lang="ts">
 const props = defineProps<{
   content: string;
-  width: string
+  width: string;
 }>();
 const emit = defineEmits(["click"]);
 </script>
 
 <template>
   <button @click="emit('click')">
-    {{ content }}
+    {{ $t(content) }}
   </button>
 </template>
 <style scoped>

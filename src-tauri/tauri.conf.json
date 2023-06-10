@@ -16,6 +16,10 @@
       "shell": {
         "all": false,
         "open": true
+      },
+      "process": {
+        "all": false,
+        "exit": true
       }
     },
     "bundle": {
@@ -42,7 +46,9 @@
         "resizable": true,
         "title": "tictactoe",
         "width": 800,
-        "height": 600
+        "height": 600,
+        "minWidth": 800,
+        "minHeight": 600
       }
     ]
   }

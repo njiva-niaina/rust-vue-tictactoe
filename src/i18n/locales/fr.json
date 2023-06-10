@@ -23,5 +23,10 @@
     "null": "Match null",
     "again": "Rejouer",
     "back": "Retour"
+  },
+  "game": {
+    "player1": "Joueur 1",
+    "player2": "Joueur 2",
+    "counter": "Jeu"
   }
 }

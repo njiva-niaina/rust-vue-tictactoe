@@ -1,14 +1,11 @@
 <script lang="ts" setup>
 import { storeToRefs } from "pinia";
-import { useI18n } from "vue-i18n";
 
 import Brain from "@/components/icons/Brain.vue";
 import Heart from "@/components/icons/Heart.vue";
 import CButtonVue from "../forms/CButton.vue";
 import { useGameStore } from "@/store/gameStore";
 import { useModalNavigation } from "@/composable/modalNavigation";
-
-const { t } = useI18n();
 
 const modalNavigation = useModalNavigation();
 const gameStore = useGameStore();
@@ -17,12 +14,12 @@ const { winner } = storeToRefs(gameStore);
 const buttons = [
   {
     id: 1,
-    content: t("result.again"),
+    content: "result.again",
     clickHandler: () => gameStore.reset(),
   },
   {
     id: 2,
-    content: t("result.back"),
+    content: "result.back",
     clickHandler: () => modalNavigation.navigateToComponent("Home"),
   },
 ];

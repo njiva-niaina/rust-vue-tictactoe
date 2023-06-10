@@ -1,27 +1,24 @@
 <script setup lang="ts">
-import { useI18n } from "vue-i18n";
-
 import CButton from "@/components/forms/CButton.vue";
 import { useModalNavigation } from "@/composable/modalNavigation";
 
-const { t } = useI18n();
 
 const modalNavigation = useModalNavigation();
 
 const buttons = [
   {
     id: 1,
-    content: t("level.easy"),
+    content: "level.easy",
     clickHandler: () => modalNavigation.selectGameLevel(0),
   },
   {
     id: 2,
-    content: t("level.intermediate"),
+    content: "level.intermediate",
     clickHandler: () => modalNavigation.selectGameLevel(1),
   },
   {
     id: 3,
-    content: t("level.impossible"),
+    content: "level.impossible",
     clickHandler: () => modalNavigation.selectGameLevel(6),
   },
 ];
@@ -40,7 +37,7 @@ const buttons = [
     <div class="separator"></div>
     <CButton
       width="18em"
-      :content="$t('level.back')"
+      content="level.back"
       @click="modalNavigation.navigateToComponent('Home')"
     />
   </div>

@@ -1,33 +1,31 @@
 <script setup lang="ts">
-import { useI18n } from "vue-i18n";
+import { exit } from "@tauri-apps/api/process";
 
 import CButton from "@/components/forms/CButton.vue";
 import { useModalNavigation } from "@/composable/modalNavigation.js";
-
-const { t } = useI18n();
 
 const modalNavigation = useModalNavigation();
 
 const buttons = [
   {
     id: 1,
-    content: t("home.singlePlayer"),
+    content: "home.singlePlayer",
     clickHandler: () => modalNavigation.playGame(true),
   },
   {
     id: 2,
-    content: t("home.multiplayer"),
+    content: "home.multiplayer",
     clickHandler: () => modalNavigation.playGame(false),
   },
   {
     id: 3,
-    content: t("home.setting"),
+    content: "home.setting",
     clickHandler: modalNavigation.navigateToSetting,
   },
   {
     id: 4,
-    content: t("home.exit"),
-    clickHandler: () => console.log("Exit"),
+    content: "home.exit",
+    clickHandler: async () => await exit(),
   },
 ];
 </script>

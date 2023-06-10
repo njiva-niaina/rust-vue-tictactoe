@@ -23,5 +23,10 @@
     "null": "Null match",
     "again": "Play again",
     "back": "Back"
+  },
+  "game" : {
+    "player1": "Player 1",
+    "player2": "Player 2",
+    "counter": "Game"
   }
 }
