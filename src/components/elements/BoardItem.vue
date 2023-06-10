@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { ref, watch } from "vue";
 
-import { useGameStore } from "@/store/gameStore";
 import Brain from "@/components/icons/Brain.vue";
 import Heart from "@/components/icons/Heart.vue";
+import { useGameStore } from "@/store/gameStore";
 
 const props = defineProps<{
   idx: number;

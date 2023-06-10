@@ -1,8 +1,8 @@
 import { createI18n } from "vue-i18n";
 
-import en from "./locales/en.json";
-import fr from "./locales/fr.json";
-import mg from "./locales/mg.json";
+import en from "@/i18n/locales/en.json";
+import fr from "@/i18n/locales/fr.json";
+import mg from "@/i18n/locales/mg.json";
 
 export default createI18n({
   locale: import.meta.env.VITE_DEFAULT_LOCALE,

@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
 
+import BoardItem from "@/components/elements/BoardItem.vue";
 import { useGameStore } from "@/store/gameStore";
-import BoardItem from "./BoardItem.vue";
 
 const gameStore = useGameStore();
 const { tab } = storeToRefs(gameStore);
