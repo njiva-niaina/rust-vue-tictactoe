@@ -12,17 +12,17 @@ const buttons = [
   {
     id: 1,
     content: t("level.easy"),
-    clickHandler: () => modalNavigation.selectGameLevel(3),
+    clickHandler: () => modalNavigation.selectGameLevel(0),
   },
   {
     id: 2,
     content: t("level.intermediate"),
-    clickHandler: () => modalNavigation.selectGameLevel(5),
+    clickHandler: () => modalNavigation.selectGameLevel(1),
   },
   {
     id: 3,
     content: t("level.impossible"),
-    clickHandler: () => modalNavigation.selectGameLevel(9),
+    clickHandler: () => modalNavigation.selectGameLevel(6),
   },
 ];
 </script>

@@ -33,14 +33,14 @@ const buttons = [
     <div class="win" v-if="winner">
       <Heart v-if="winner.schema === 'Heart'" :height="128" :width="128" />
       <Brain v-else :height="128" :width="128" />
-      <div class="legend">Win</div>
+      <div class="legend">{{ $t("result.win") }}</div>
     </div>
     <div class="null" v-else>
       <div class="inline">
         <Heart :height="128" :width="128" />
         <Brain :height="128" :width="128" />
       </div>
-      <div class="legend">Match null</div>
+      <div class="legend">{{ $t("result.null") }}</div>
     </div>
     <CButtonVue
       v-for="btn in buttons"

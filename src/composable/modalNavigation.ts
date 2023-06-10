@@ -7,8 +7,6 @@ export const useModalNavigation = () => {
   const gameStore = useGameStore();
   const modalStore = useModalStore();
 
-  const { isGameOver } = storeToRefs(gameStore);
-
   function navigateToComponent(
     component: "Home" | "Setting" | "Result" | "GameLevel"
   ) {
@@ -20,10 +18,9 @@ export const useModalNavigation = () => {
   }
 
   function playGame(isSinglePlayer: boolean) {
-    
     if (!isSinglePlayer) {
       gameStore.setSinglePlayerMode(false);
-      modalStore.setShowModal({ display: false });
+      gameStore.resetWithoutCounter();
     } else {
       gameStore.setSinglePlayerMode(true);
       navigateToComponent("GameLevel");
@@ -32,7 +29,7 @@ export const useModalNavigation = () => {
 
   function selectGameLevel(level: number) {
     gameStore.setLevel(level);
-    modalStore.setShowModal({ display: false });
+    gameStore.resetWithoutCounter();
   }
 
   return {

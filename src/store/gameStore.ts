@@ -47,8 +47,8 @@ export const useGameStore = defineStore("game", () => {
     level.value = _level;
   }
 
-  async function reset() {
-    const result = (await invoke("reset")) as ResetResult;
+  async function _reset(fn: Function) {
+    const result = (await fn()) as ResetResult;
 
     tab.value = result.tab;
     gameCounter.value = result.game_counter;
@@ -58,8 +58,15 @@ export const useGameStore = defineStore("game", () => {
 
     isGameOver.value = false;
     winner.value = null;
+    modalStore.setShowModal({ display: false });
+  }
 
-    modalStore.setShowModal({display: false})
+  async function resetWithoutCounter() {
+    _reset(() => invoke("reset_without_counter"));
+  }
+
+  async function reset() {
+    _reset(() => invoke("reset"));
   }
 
   async function makeMove(idx: number) {
@@ -109,5 +116,6 @@ export const useGameStore = defineStore("game", () => {
     reset,
     makeMove,
     setSinglePlayerMode,
+    resetWithoutCounter,
   };
 });

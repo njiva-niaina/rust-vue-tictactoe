@@ -42,6 +42,19 @@ impl Node {
         }
     }
 
+    pub fn reset_without_counter(&mut self) -> Self {
+        self.tab = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+        self.player = 1;
+        self.score = HashMap::from([(1, 0), (-1, 0)]);
+        self.game_counter = 0;
+        Self {
+            tab: self.tab,
+            score: self.score.clone(),
+            player: self.player,
+            game_counter: self.game_counter,
+        }
+    }
+
     pub fn make_move(&mut self, idx: usize) -> HashMap<String, i32> {
         if self.is_terminal() {
             return HashMap::from([
