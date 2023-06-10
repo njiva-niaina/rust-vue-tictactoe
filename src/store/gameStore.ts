@@ -23,6 +23,20 @@ export const useGameStore = defineStore("game", () => {
     },
   });
 
+  function setGameStatus(result: MoveResult) {
+    if (!!result.isGameOver) {
+      isGameOver.value = true;
+      if ((!!result.isWinner && result.player === 1) || result.player === -1) {
+        winner.value = players[result.player];
+      }
+      return;
+    }
+  }
+
+  function setSinglePlayerMode(_isSinglePlayer: boolean) {
+    isSinglePlayer.value = _isSinglePlayer;
+  }
+
   async function reset() {
     const result = (await invoke("reset")) as ResetResult;
     tab.value = result.tab;
@@ -49,16 +63,6 @@ export const useGameStore = defineStore("game", () => {
     }
 
     return;
-  }
-
-  function setGameStatus(result: MoveResult) {
-    if (!!result.isGameOver) {
-      isGameOver.value = true;
-      if ((!!result.isWinner && result.player === 1) || result.player === -1) {
-        winner.value = players[result.player];
-      }
-      return;
-    }
   }
 
   async function makeBestMove() {
@@ -88,5 +92,6 @@ export const useGameStore = defineStore("game", () => {
     isSinglePlayer,
     reset,
     makeMove,
+    setSinglePlayerMode,
   };
 });

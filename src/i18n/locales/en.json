@@ -1,5 +1,21 @@
 {
   "home": {
-    "singlePlayer": "Single Player"
+    "title": "Welcome",
+    "singlePlayer": "Single Player",
+    "multiplayer": "Multiplayer",
+    "setting": "Setting",
+    "exit": "Exit"
+  },
+  "level": {
+    "title": "Level",
+    "easy": "Easy",
+    "intermediate": "Intermediate",
+    "impossible": "Impossible",
+    "back": "Back"
+  },
+  "setting": {
+    "title": "Setting",
+    "lang": "Language",
+    "back": "Back"
   }
 }

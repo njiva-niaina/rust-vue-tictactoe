@@ -1,5 +1,21 @@
 {
   "home": {
-    "singlePlayer": "Single Player"
+    "title": "Bienvenue",
+    "singlePlayer": "Solo",
+    "multiplayer": "Multi joueur",
+    "setting": "Paramètre",
+    "exit": "Quitter"
+  },
+  "level": {
+    "title": "Difficulté",
+    "easy": "Facile",
+    "intermediate": "Intermediaire",
+    "impossible": "Impossible",
+    "back": "Retour"
+  },
+  "setting": {
+    "title": "Paramètre",
+    "lang": "Langage",
+    "back": "Retour"
   }
 }

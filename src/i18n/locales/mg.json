@@ -1,5 +1,21 @@
 {
   "home": {
-    "singlePlayer": "Single Player"
+    "title": "Tongasoa",
+    "singlePlayer": "Olona iray",
+    "multiplayer": "Olona roa",
+    "setting": "Fanamboarana",
+    "exit": "Hivoaka"
+  },
+  "level": {
+    "title": "Hasarotana",
+    "easy": "Mora",
+    "intermediate": "Antonony",
+    "impossible": "Tsy vita",
+    "back": "Hiverina"
+  },
+  "setting": {
+    "title": "Fanamboarana",
+    "lang": "Teny",
+    "back": "Hiverina"
   }
 }

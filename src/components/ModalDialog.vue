@@ -1,14 +1,17 @@
 <script setup lang="ts">
-const props = defineProps<{
-  display: boolean;
-}>();
+import { storeToRefs } from "pinia";
+
+import { useModalStore } from "@/store/modalStore";
+
+const modalStore = useModalStore();
+const { showModal, currentModalContent } = storeToRefs(modalStore);
 </script>
 
 <template>
   <Teleport to="body">
-    <div role="dialog" class="modal" :class="display ? 'show' : ''">
-      <div class="dialog" :class="display ? 'show' : ''">
-        <slot></slot>
+    <div role="dialog" class="modal" :class="showModal ? 'show' : ''">
+      <div class="dialog" :class="showModal ? 'show' : ''">
+        <component v-if="currentModalContent" :is="currentModalContent" />
       </div>
     </div>
   </Teleport>
@@ -22,7 +25,6 @@ const props = defineProps<{
   width: 100%;
   opacity: 0;
   background-color: rgba(0, 0, 0, 0.2);
-  transition: all 1s ease;
 }
 
 .modal.show {
@@ -38,6 +40,7 @@ const props = defineProps<{
   right: 50%;
   transform: translateX(50%);
   min-width: 24em;
+  min-height: 18em;
   box-shadow: 0 0.9em 2.8em rgba(86, 66, 0, 0.2);
   border-radius: 0.5em;
   padding: 16px;
@@ -47,7 +50,7 @@ const props = defineProps<{
 .dialog.show {
   z-index: 100;
   opacity: 1;
-  bottom: 45%;
+  bottom: 35%;
   background-color: #ffffff;
 }
 </style>
