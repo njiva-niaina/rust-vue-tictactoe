@@ -1,27 +1,27 @@
 {
   "home": {
     "title": "Tongasoa",
-    "singlePlayer": "Olona iray",
-    "multiplayer": "Olona roa",
-    "setting": "Fanamboarana",
+    "singlePlayer": "Mpilalao iray",
+    "multiplayer": "Mpilalao maro",
+    "setting": "Fametrahana",
     "exit": "Hivoaka"
   },
   "level": {
-    "title": "Hasarotana",
+    "title": "Fahasarotana",
     "easy": "Mora",
-    "intermediate": "Antonony",
-    "impossible": "Tsy vita",
+    "intermediate": "Kafa",
+    "impossible": "Tsy azo atao",
     "back": "Hiverina"
   },
   "setting": {
-    "title": "Fanamboarana",
-    "lang": "Misafidiana teny",
+    "title": "Fametrahana",
+    "lang": "Misafidiana fiteny",
     "back": "Hiverina"
   },
   "result": {
-    "win": "no mpandresy",
+    "win": "no mandresy",
     "null": "ady sahala",
-    "again": "Hilalao",
+    "again": "Famerenana",
     "back": "Hiverina"
   },
   "game": {

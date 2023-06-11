@@ -20,7 +20,7 @@
   },
   "result": {
     "win": "a gagné",
-    "null": "Match null",
+    "null": "Match nul",
     "again": "Rejouer",
     "back": "Retour"
   },

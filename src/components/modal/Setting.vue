@@ -2,14 +2,45 @@
 import { useI18n } from "vue-i18n";
 
 import CButton from "@/components/forms/CButton.vue";
-import ENFlag from "@/components/icons/ENFlag.vue";
+import Flag from "@/components/icons/Flag.vue";
 import { useModalNavigation } from "@/composable/modalNavigation";
 import { useTranslation } from "@/composable/translation";
+import { ComputedRef, computed, ref } from "vue";
 
 const { locale } = useI18n();
 
 const modalNavigation = useModalNavigation();
 const translation = useTranslation();
+
+const flags  = ref<{
+  id: number;
+  flag: "fr" | "en" | "mg";
+  size: string;
+  isSelected: ComputedRef<boolean>;
+  clickHandler: Function;
+}[]>([
+  {
+    id: 1,
+    flag: "fr",
+    size: "40px",
+    isSelected: computed(() => locale.value === "fr"),
+    clickHandler: () => translation.switchLanguage("fr"),
+  },
+  {
+    id: 2,
+    flag: "en",
+    size: "40px",
+    isSelected: computed(() => locale.value === "en"),
+    clickHandler: () => translation.switchLanguage("en"),
+  },
+  {
+    id: 3,
+    flag: "mg",
+    size: "40px",
+    isSelected: computed(() => locale.value === "mg"),
+    clickHandler: () => translation.switchLanguage("mg"),
+  },
+]);
 </script>
 
 <template>
@@ -18,17 +49,13 @@ const translation = useTranslation();
     <div class="lang-container">
       <p>{{ $t("setting.lang") }}</p>
       <div class="lang">
-        <ENFlag
-          :is-selected="locale === 'en'"
-          @click="translation.switchLanguage('en')"
-        />
-        <ENFlag
-          :is-selected="locale === 'fr'"
-          @click="translation.switchLanguage('fr')"
-        />
-        <ENFlag
-          :is-selected="locale === 'mg'"
-          @click="translation.switchLanguage('mg')"
+        <Flag
+          v-for="flag in flags"
+          :key="flag.id"
+          :flag="flag.flag"
+          :size="flag.size"
+          :is-selected="flag.isSelected"
+          @click="flag.clickHandler"
         />
       </div>
     </div>
